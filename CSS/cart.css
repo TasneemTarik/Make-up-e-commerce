@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.marcellus-regular {
+    font-family: "Marcellus", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.nav-link {
+    color: black;
+
+}
+
+.nav-link:hover {
+    color: pink;
+}
+
+.nav {
+    margin: 0 250px;
+}
+
+nav {
+    position: fixed;
+    background-color: white;
+    z-index: 1000;
+}
+.navbar {
+    width: 100%;
+    height: 70px;
+    margin: auto;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-brand {
+    max-height: 60px;
+    width: auto;
+    margin-left: 50px;
+
+}
+
+
+.d-flex img {
+    margin: 0 5px;
+    width: 18px;
+    height: 18px;
+}
+
+.d-flex p {
+    margin: 0 10px 0 20px;
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+.d-flex {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    margin-left: 90px;
+}
+
+table {
+    width: 80%;
+    margin: 50px auto;
+    border-collapse: collapse;
+    border: 2px solid pink;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+table caption {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+table thead {
+    background-color: white;
+}
+
+table thead th {
+    color: 5D5B5B;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid pink;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+table img {
+    width: 80px;
+    height: auto;
+}
+
+h4 {
+    margin-left: 140px;
+}
+
+.btn {
+    background-color: #ff4081;
+    justify-content: end;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    text-align: end;
+    margin-right: 160px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.cart-buttons {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.confirm-shipping {
+    margin-left: 90px;
+}
+
+.btn:hover {
+    background-color: #e73370;
+}
