@@ -20,40 +20,79 @@
     <title>Cart</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-white">
-      <div class="brand-img">
-        <img src="/images/logo-retina.png" alt="Logo" class="navbar-brand" />
-      </div>
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">SHOP ALL</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">MAKEUP</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">SKINCARE</a>
-        </li>
-   
-        <li class="nav-item">
-          <a class="nav-link" href="#">ABOUT</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">CONTACT</a>
-        </li>
-      </ul>
-      <div class="d-flex navbar-cart">
-        <a href="Login.html">
-          <img src="/images/user.png" alt="user" class="img-user" />
+   <nav class="navbar navbar-expand-lg bg-white fixed-top shadow-sm">
+      <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="/images/logo-retina.png"
+            alt="Logo"
+            style="max-height: 50px"
+          />
         </a>
 
-        <p class="cart-total">$0.00</p>
-        <div class="cart-icon-wrapper">
-          <img src="/images/cart.png" alt="cart" class="img-cart" />
-          <span class="cart-badge">0</span>
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links + Cart/User -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#trending-products"
+                >SHOP ALL</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#trending-products">MAKEUP</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#trending-products">SKINCARE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">CONTACT</a>
+            </li>
+          </ul>
+
+          <button
+            id="logoutBtn"
+            style="display: none"
+            class="btn btn-sm btn-outline-dark me-3"
+          >
+            Logout
+          </button>
+
+          <div class="d-flex navbar-cart align-items-center">
+            <a
+              href="/Login.html"
+              class="user-link d-flex align-items-center me-3"
+            >
+              <img src="/images/user.png" alt="user" class="img-user" />
+              <span class="username ms-1"></span>
+            </a>
+
+            <p class="cart-total mb-0 me-2">$0.00</p>
+            <div class="cart-icon-wrapper">
+              <img src="/images/cart.png" alt="cart" class="img-cart" />
+              <span class="cart-badge">0</span>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
+
     <!-- table -->
 
     <h4>Cart</h4>

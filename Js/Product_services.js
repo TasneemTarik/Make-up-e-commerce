@@ -85,7 +85,17 @@ export class ProductService {
         }
 
         localStorage.setItem("cart", JSON.stringify(cart));
-        alert("Added to cart!");
+        function showToast(message) {
+          const toast = document.getElementById("toast");
+          toast.textContent = message;
+          toast.className = "toast show";
+          setTimeout(() => {
+            toast.className = "toast";
+          }, 3000);
+        }
+
+        // مثال: بدل alert
+        showToast("✅ Added to cart!");
 
         window.location.href = "../Cart.html";
       }
@@ -102,8 +112,13 @@ export class ProductService {
       <img src="${product.image}" alt="${product.name}" />
       <h2>${product.name}</h2>
       <p><strong>Price:</strong> $${product.price.toFixed(2)}</p>
-      <p>${product.description || "No description available"}</p>
-      <button class="add-btn" data-id="${product.id}">Add to Cart</button>
+<p>${
+      product.description && product.description.trim() !== ""
+        ? product.description
+        : ""
+    }</p>      <button class="add-btn" data-id="${
+      product.id
+    }">Add to Cart</button>
     `;
 
     modal.style.display = "block";

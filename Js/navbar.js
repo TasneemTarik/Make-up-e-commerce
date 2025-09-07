@@ -20,39 +20,109 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.getElementById("logoutBtn");
   const userLink = document.getElementById("userLink");
 
-  // افترض إن عندك يوزر متخزن في localStorage بعد اللوجين
   const currentUser = JSON.parse(localStorage.getItem("user"));
 
-  if (currentUser) {
-    // يوزر موجود → اعرض اسمه و زرار logout
-    userLink.innerHTML = `<span>👤 ${currentUser.name}</span>`;
+  if (currentUser && userLink && logoutBtn) {
+    userLink.innerHTML = `<span> ${currentUser.name}</span>`;
     logoutBtn.style.display = "inline-block";
-  } else {
-    // مفيش يوزر → سيب اللينك يفتح صفحة Login
+
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("user");
+      window.location.href = "../Login.html";
+    });
+  } else if (logoutBtn) {
     logoutBtn.style.display = "none";
   }
-
-  // زرار تسجيل الخروج
-  logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("user");
-    window.location.href = "../Login.html"; // رجّعه على صفحة اللوجين
-  });
 });
-
 document.addEventListener("DOMContentLoaded", () => {
   const usernameElem = document.querySelector(".username");
   const userLink = document.querySelector(".user-link");
 
   const loggedInUser = localStorage.getItem("loggedInUser");
 
-  if (loggedInUser) {
-    // لو في يوزر عامل لوجين
+  if (loggedInUser && usernameElem && userLink) {
     usernameElem.textContent = loggedInUser;
-    userLink.setAttribute("href", "#"); // يشيل لينك الـ login
-  } else {
-    // لو مفيش لوجين
+    userLink.setAttribute("href", "#");
+  } else if (usernameElem && userLink) {
     usernameElem.textContent = "";
-    userLink.setAttribute("href", "../Login.html"); // يوديه لصفحة اللوجين
+    userLink.setAttribute("href", "../Login.html");
   }
 });
-document.addEventListener("DOMContentLoaded", updateCartInfo);
+// navbar.js
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
+updateCartInfo();
+document.addEventListener("DOMContentLoaded", () => {
+  const cartIcon = document.querySelector(".cart-icon-wrapper");
+  const cartDetails = document.getElementById("cart-details");
+
+  // cart stored in localStorage
+  function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  }
+
+  function renderCartDetails() {
+    let cart = getCart();
+
+    if (cart.length === 0) {
+      cartDetails.innerHTML = `<p>Your cart is empty.</p>`;
+      return;
+    }
+
+    cartDetails.innerHTML = `
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${cart
+            .map(
+              (item) => `
+            <tr>
+              <td>${item.name}</td>
+              <td>${item.quantity}</td>
+              <td>$${(item.price * item.quantity).toFixed(2)}</td>
+            </tr>
+          `
+            )
+            .join("")}
+        </tbody>
+      </table>
+    `;
+  }
+
+  // عند الضغط على أيقونة الكارت
+  cartIcon.addEventListener("click", () => {
+    renderCartDetails();
+    let cartModal = new bootstrap.Modal(document.getElementById("cartModal"));
+    cartModal.show();
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cartIcon = document.querySelector(".cart-icon-wrapper");
+  if (cartIcon) {
+    cartIcon.addEventListener("click", toggleCart);
+  }
+});
+
+function toggleCart() {
+  const sideCart = document.getElementById("sideCart");
+  const overlay = document.getElementById("cartOverlay");
+
+  sideCart.classList.toggle("active");
+  overlay.style.display = sideCart.classList.contains("active")
+    ? "block"
+    : "none";
+}
+// overlay.addEventListener("click", toggleCart);

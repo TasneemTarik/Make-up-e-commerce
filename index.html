@@ -22,44 +22,98 @@
     <title>HomePage</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-white">
-      <div class="brand-img">
-        <img src="/images/logo-retina.png" alt="Logo" class="navbar-brand" />
-      </div>
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#trending-products"
-            >SHOP ALL</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#trending-products">MAKEUP</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#trending-products">SKINCARE</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">ABOUT</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">CONTACT</a>
-        </li>
-      </ul>
-      <button id="logoutBtn" style="display: none">Logout</button>
-
-      <div class="d-flex navbar-cart">
-        <a href="/Login.html" class="user-link">
-          <img src="/images/user.png" alt="user" class="img-user" />
-          <span class="username"></span>
+    <nav class="navbar navbar-expand-lg bg-white fixed-top shadow-sm">
+      <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="/images/logo-retina.png"
+            alt="Logo"
+            style="max-height: 50px"
+          />
         </a>
 
-        <p class="cart-total">$0.00</p>
-        <div class="cart-icon-wrapper">
-          <img src="/images/cart.png" alt="cart" class="img-cart" />
-          <span class="cart-badge">0</span>
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links + Cart/User -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#trending-products"
+                >SHOP ALL</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#trending-products">MAKEUP</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#trending-products">SKINCARE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">CONTACT</a>
+            </li>
+          </ul>
+
+          <button
+            id="logoutBtn"
+            style="display: none"
+            class="btn btn-sm btn-outline-dark me-3"
+          >
+            Logout
+          </button>
+
+          <div class="d-flex navbar-cart align-items-center">
+            <a
+              href="/Login.html"
+              class="user-link d-flex align-items-center me-3"
+            >
+              <img src="/images/user.png" alt="user" class="img-user" />
+              <span class="username ms-1"></span>
+            </a>
+
+            <p class="cart-total mb-0 me-2">$0.00</p>
+            <div class="cart-icon-wrapper">
+              <img src="/images/cart.png" alt="cart" class="img-cart" />
+              <span class="cart-badge">0</span>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
+    <!-- Sidebar Cart -->
+    <!-- Sidebar Cart -->
+    <div id="sideCart" class="side-cart">
+      <div
+        class="side-cart-header d-flex justify-content-between align-items-center"
+      >
+        <h5>Your Cart</h5>
+        <button id="closeCartBtn" class="btn-close"></button>
+      </div>
+      <div class="side-cart-body" id="sideCartBody">
+        <p>No items yet.</p>
+      </div>
+      <div class="side-cart-footer">
+        <p>Total: <span id="cart-total">$0.00</span></p>
+        <button class="btn btn-dark w-100">Checkout</button>
+      </div>
+    </div>
+    <div id="cartOverlay" class="cart-overlay"></div>
+
+    <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-content">
         <h6>New in town</h6>
@@ -148,10 +202,30 @@
         <p>Copyright © 2025 Be Bold | Powered by Be Bold</p>
       </div>
     </footer>
+    <div id="toast" class="toast"></div>
+    <!-- Cart Modal
+<div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">🛒 Your Cart</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="cart-details">
+        <p>Your cart is empty.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="/HTML/checkout.html" class="btn btn-primary">Checkout</a>
+      </div>
+    </div>
+  </div>
+</div> -->
 
     <!-- <script type="module" src="./Js/home.js"></script> -->
     <script type="module" src="/Js/slider.js"></script>
     <script type="module" src="/Js/home.js"></script>
     <script type="module" src="/Js/navbar.js"></script>
+    <script type="module" src="/Js/Side_bar.js"></script>
   </body>
 </html>

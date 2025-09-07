@@ -1,8 +1,18 @@
 export class Product {
-  constructor({ id, name, price, image, image_link, api_featured_image }) {
+  constructor({
+    id,
+    name,
+    price,
+    image,
+    image_link,
+    api_featured_image,
+    description, 
+    quantity,
+  }) {
     this.id = id;
     this.name = name;
     this.price = parseFloat(price) || 0;
+    this.description = description || ""; 
 
     if (image) {
       this.image = image;
@@ -17,7 +27,7 @@ export class Product {
         "https://d3t32hsnjxo7q6.cloudfront.net/i/991799d3e70b8856686979f8ff6dcfe0_ra,w158,h184_pa,w158,h184.png";
     }
 
-    this.quantity = parseInt(arguments[0].quantity) || 1;
+    this.quantity = parseInt(quantity) || 1;
   }
 
   getTotal() {
