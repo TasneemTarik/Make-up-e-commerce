@@ -569,7 +569,9 @@ nav {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
 }
-
+.cart-icon-wrapper{
+   cursor:pointer
+}
 .footer {
     opacity: 0;
     transform: translateY(50px);
@@ -612,7 +614,7 @@ nav {
   height: 100%;
   background: #fff;
   box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-  display: flex;
+  display: none;
   flex-direction: column;
   transition: right 0.3s ease;
   z-index: 1050;
@@ -640,32 +642,3 @@ nav {
 }
 
 
-.cart-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: none;
-  z-index: 1040;
-}
-
-.side-cart {
-  position: fixed;
-  top: 0;
-  right: -350px; /* مخفي افتراضي */
-  width: 350px;
-  height: 100%;
-  background: #fff;
-  box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-  display: flex;
-  flex-direction: column;
-  transition: right 0.3s ease;
-  z-index: 1050;
-  padding: 15px;
-}
-
-.side-cart.active {
-  right: 0; /* لما نضيف الكلاس active يتحرك للداخل */
-}

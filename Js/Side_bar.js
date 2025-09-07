@@ -40,7 +40,8 @@ function renderSideCart() {
       return `
         <div class="d-flex justify-content-between mb-2">
           <div>
-            <strong>${item.name}</strong><br>
+            <img src="${item.image}" width="60" />
+            <strong>${item.name}</strong><br />
             <small>Qty: ${item.quantity}</small>
           </div>
           <div>$${(item.price * item.quantity).toFixed(2)}</div>

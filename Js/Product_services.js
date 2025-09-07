@@ -73,7 +73,8 @@ export class ProductService {
       if (e.target.classList.contains("add-btn")) {
         const productId = e.target.dataset.id;
         const product = this.getProductById(productId);
-
+        const sideCart = document.getElementsByClassName("side-cart");
+        if (sideCart.length > 0) sideCart[0].style.display = "flex";
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         const existing = cart.find((p) => p.id == product.id);
 
@@ -97,7 +98,7 @@ export class ProductService {
         // مثال: بدل alert
         showToast("✅ Added to cart!");
 
-        window.location.href = "../Cart.html";
+        // window.location.href = "../Cart.html";
       }
     });
   }

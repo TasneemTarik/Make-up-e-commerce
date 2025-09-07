@@ -18,12 +18,13 @@ export function updateCartInfo() {
 }
 document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.getElementById("logoutBtn");
-  const userLink = document.getElementById("userLink");
+  const userLink = document.getElementsByClassName("user-link");
 
   const currentUser = JSON.parse(localStorage.getItem("user"));
-
-  if (currentUser && userLink && logoutBtn) {
-    userLink.innerHTML = `<span> ${currentUser.name}</span>`;
+  console.log(currentUser.fullname);
+  console.log(userLink);
+  if (currentUser ) {
+    userLink[0].innerHTML = `<span> ${currentUser.fullname}</span>`;
     logoutBtn.style.display = "inline-block";
 
     logoutBtn.addEventListener("click", () => {
@@ -75,36 +76,36 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    cartDetails.innerHTML = `
-      <table class="table align-middle">
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Qty</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${cart
-            .map(
-              (item) => `
-            <tr>
-              <td>${item.name}</td>
-              <td>${item.quantity}</td>
-              <td>$${(item.price * item.quantity).toFixed(2)}</td>
-            </tr>
-          `
-            )
-            .join("")}
-        </tbody>
-      </table>
-    `;
+    // cartDetails.innerHTML = `
+    //   <table class="table align-middle">
+    //     <thead>
+    //       <tr>
+    //         <th>Product</th>
+    //         <th>Qty</th>
+    //         <th>Price</th>
+    //       </tr>
+    //     </thead>
+    //     <tbody>
+    //       ${cart
+    //         .map(
+    //           (item) => `
+    //         <tr>
+    //           <td>${item.name}</td>
+    //           <td>${item.quantity}</td>
+    //           <td>$${(item.price * item.quantity).toFixed(2)}</td>
+    //         </tr>
+    //       `
+    //         )
+    //         .join("")}
+    //     </tbody>
+    //   </table>
+    // `;
   }
 
   // عند الضغط على أيقونة الكارت
   cartIcon.addEventListener("click", () => {
     renderCartDetails();
-    let cartModal = new bootstrap.Modal(document.getElementById("cartModal"));
+    // let cartModal = new bootstrap.Modal(document.getElementById("cartModal"));
     cartModal.show();
   });
 });
@@ -115,14 +116,21 @@ document.addEventListener("DOMContentLoaded", () => {
     cartIcon.addEventListener("click", toggleCart);
   }
 });
+  const sideCart = document.getElementById("sideCart");
 
 function toggleCart() {
-  const sideCart = document.getElementById("sideCart");
   const overlay = document.getElementById("cartOverlay");
-
-  sideCart.classList.toggle("active");
-  overlay.style.display = sideCart.classList.contains("active")
-    ? "block"
-    : "none";
+        sideCart.style.display = "flex";
+  // sideCart.classList.toggle("active");
+  // overlay.style.display = sideCart.classList.contains("active")
+  //   ? "block"
+  //   : "none";
+    
 }
+const cartIcon = document.getElementById("cartIcon");
+cartIcon.addEventListener("click", toggleCart);
+const closeBtn = document.getElementById("closeCartBtn");
+closeBtn.addEventListener("click", ()=>{
+sideCart.style.display = "none";
+});
 // overlay.addEventListener("click", toggleCart);
